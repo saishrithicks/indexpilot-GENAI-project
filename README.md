@@ -97,43 +97,6 @@ API_KEY=YOUR-KEY
 
 Use your provider's documented base URL and model. Restart the application. This transmits the selected email or retrieved excerpts and question to the provider. Never put keys in source code, screenshots, or GitHub. `.env` is excluded by `.gitignore`.
 
-## How to run the demo
-1. Load the sample inbox and choose the urgent security review email.
-2. Click **Analyze selected email**; inspect tasks and source quotes.
-3. In **Ask your inbox**, ask “What does the security review require?”
-4. Review retrieved sources. Demo mode returns excerpts; LLM modes synthesize an answer.
-5. Mark a task completed in **Tasks**.
-6. Prepare and edit a draft in **Reply drafts**.
-
-JSON uploads use this format (maximum 50 emails per JSON file):
-```json
-[{"subject":"Project review","sender":"maya@example.test","date":"2026-10-06","body":"Please review the report by Friday."}]
-```
-EML attachments are ignored; the plain-text body is preferred, with HTML converted to plain text. Each body is limited to 30,000 characters. UI uploads allow 10 files per operation, with a 2 MB limit per file.
-
-## Tests
-```bash
-python -m pip install -r requirements-dev.txt
-python -m pytest -q
-```
-Tests cover duplicate imports, EML HTML handling, malformed/oversized uploads, persisted completion state, relevant/no-match retrieval, unsupported task evidence, provider request formats, and API workflow. Provider tests use mocks; live LLM quality must be evaluated with your installed model/key.
-
-## Screenshots and demo video
-See `docs/screenshots/` for any included execution screenshots and `docs/DEMO_SCRIPT.md` for a 3–4 minute recording plan.
-
-**Demo video: pending your recording — add an accessible 2–5 minute video link here before submission.**
-
-## GitHub submission
-Create an empty **public** repository in your own GitHub account. Run these commands from the extracted project folder, replacing the URL:
-```bash
-git init
-git add .
-git commit -m "Build InboxPilot email assistant"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/inboxpilot.git
-git push -u origin main
-```
-Before pushing, review `git status` and make sure `.env`, local email data, and credentials are excluded. Add your team details, actual screenshots, and video link to this README. Verify the repository and video in a signed-out browser. Submit the repository URL in your team's Excel column. This package does not create or publish a GitHub repository for you.
 
 ## Limitations and responsible use
 - Local single-user prototype without authentication; bind only to 127.0.0.1. No production/public hosting configuration is included.
